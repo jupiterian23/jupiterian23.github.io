@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shubham R Gorule — AWS Cloud Support Engineer</title>
+<meta name="description" content="Shubham R Gorule, Mumbai. AWS, Linux and networking. Building and diagnosing cloud infrastructure. Open to Cloud Support Engineer roles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A1826;
+    --deep:#0E2236;
+    --raise:#12293D;
+    --rule:#1E3B54;
+    --line:#2E5C7A;
+    --text:#F2F7FB;
+    --muted:#9DBBD1;
+    --dim:#7C9BB2;
+    --amber:#E8A33D;
+    --ok:#5FB49C;
+    --measure:68ch;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--text);
+    font-family:"Space Grotesk",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
+
+  /* ---------- hero ---------- */
+  header{
+    padding:88px 0 64px;
+    border-bottom:1px solid var(--rule);
+    background:
+      linear-gradient(180deg,rgba(18,44,67,.55),transparent 70%),
+      repeating-linear-gradient(90deg,rgba(127,178,212,.045) 0 1px,transparent 1px 132px);
+  }
+  .status{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:"IBM Plex Mono",monospace;font-size:14px;
+    color:var(--muted);letter-spacing:.02em;
+    border:1px solid var(--rule);border-radius:999px;
+    padding:7px 16px 7px 13px;margin-bottom:26px;
+  }
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--amber);flex:none}
+  @media (prefers-reduced-motion:no-preference){
+    .dot{animation:pulse 2.6s ease-in-out infinite}
+    @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,163,61,.5)}50%{box-shadow:0 0 0 7px rgba(232,163,61,0)}}
+  }
+  h1{
+    font-size:clamp(2.4rem,6.2vw,4.1rem);
+    line-height:1.02;margin:0 0 18px;font-weight:700;letter-spacing:-.02em;
+  }
+  .lede{font-size:clamp(1.05rem,2.1vw,1.28rem);color:var(--muted);max-width:52ch;margin:0 0 34px}
+  .lede strong{color:var(--text);font-weight:500}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{
+    display:inline-block;text-decoration:none;font-size:15px;
+    padding:11px 20px;border-radius:4px;border:1px solid var(--rule);
+    color:var(--muted);transition:border-color .18s,color .18s,background .18s;
+  }
+  .btn:hover{border-color:var(--line);color:var(--text);background:var(--deep)}
+  .btn-key{background:var(--amber);border-color:var(--amber);color:#141005;font-weight:500}
+  .btn-key:hover{background:#f0b158;border-color:#f0b158;color:#141005}
+
+  /* the incident line: steady, one fault, resolved */
+  .trace{width:100%;height:120px;margin-top:56px;display:block;overflow:visible}
+  .trace path{
+    fill:none;stroke:var(--line);stroke-width:2;stroke-linejoin:round;stroke-linecap:round;
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .trace path{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.6s cubic-bezier(.5,0,.2,1) .35s forwards}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    .trace .peak{opacity:0;animation:show .5s ease 2.6s forwards}
+    @keyframes show{to{opacity:1}}
+  }
+  .trace-note{
+    font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--dim);
+    margin-top:2px;
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:74px 0;border-bottom:1px solid var(--rule)}
+  h2{
+    font-size:1.02rem;font-weight:500;color:var(--amber);
+    font-family:"IBM Plex Mono",monospace;letter-spacing:.04em;
+    margin:0 0 34px;
+  }
+  h3{font-size:1.22rem;margin:0 0 8px;font-weight:500;letter-spacing:-.01em}
+  p{max-width:var(--measure)}
+  .prose{color:var(--muted);font-size:1.06rem}
+  .prose strong{color:var(--text);font-weight:500}
+
+  /* skills as service checks */
+  .checks{display:grid;gap:0;margin:0;padding:0;list-style:none}
+  .check{
+    display:grid;grid-template-columns:106px 1fr;gap:22px;align-items:baseline;
+    padding:16px 0;border-top:1px solid var(--rule);
+  }
+  .check:last-child{border-bottom:1px solid var(--rule)}
+  .check-label{
+    font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ok);
+    letter-spacing:.03em;
+  }
+  .check-body{color:var(--muted);font-size:.98rem}
+  .check-body b{display:block;color:var(--text);font-weight:500;margin-bottom:3px;font-size:1.02rem}
+  @media (max-width:600px){
+    .check{grid-template-columns:1fr;gap:6px}
+  }
+
+  /* projects as incident entries */
+  .entry{padding:30px 0;border-top:1px solid var(--rule)}
+  .entry:first-of-type{border-top:none;padding-top:0}
+  .entry-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;margin-bottom:14px}
+  .entry-head h3{margin:0}
+  .repo{
+    font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--dim);
+    text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;
+  }
+  .repo:hover{color:var(--amber);border-color:var(--amber)}
+  .field{display:grid;grid-template-columns:96px 1fr;gap:20px;margin-bottom:11px}
+  .field dt{
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--dim);
+    letter-spacing:.03em;padding-top:3px;
+  }
+  .field dd{margin:0;color:var(--muted);max-width:62ch}
+  @media (max-width:600px){
+    .field{grid-template-columns:1fr;gap:2px;margin-bottom:14px}
+  }
+  .stack{
+    font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--dim);
+    margin-top:14px;letter-spacing:.02em;
+  }
+  .note{
+    font-size:.9rem;color:var(--dim);border-left:2px solid var(--rule);
+    padding-left:14px;margin-top:16px;max-width:60ch;
+  }
+
+  /* experience */
+  .role{
+    display:grid;grid-template-columns:132px 1fr;gap:26px;
+    padding:22px 0;border-top:1px solid var(--rule);
+  }
+  .role:last-child{border-bottom:1px solid var(--rule)}
+  .when{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--dim);padding-top:4px}
+  .role p{margin:6px 0 0;color:var(--muted);font-size:.98rem}
+  @media (max-width:600px){
+    .role{grid-template-columns:1fr;gap:4px}
+  }
+
+  /* contact */
+  footer{padding:74px 0 84px}
+  .contact{display:flex;flex-wrap:wrap;gap:14px 40px;margin-top:26px}
+  .contact a{
+    font-family:"IBM Plex Mono",monospace;font-size:15px;color:var(--muted);
+    text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px;
+  }
+  .contact a:hover{color:var(--amber);border-color:var(--amber)}
+  .colophon{margin-top:56px;font-size:13px;color:var(--dim);font-family:"IBM Plex Mono",monospace}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="status"><span class="dot"></span>Open to Cloud Support roles · Mumbai · Immediate joiner</span>
+    <h1>Shubham R Gorule</h1>
+    <p class="lede">I build cloud infrastructure on AWS, and I spend most of my time <strong>working out why it stopped working</strong>. Linux, networking, and the diagnostic path from symptom to cause.</p>
+    <div class="actions">
+      <a class="btn btn-key" href="mailto:shubhamgorule23@gmail.com">Email me</a>
+      <a class="btn" href="Shubham_R_Gorule_Resume.pdf">Resume</a>
+      <a class="btn" href="https://github.com/jupiterian23">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/shubham-gorule-a44446361">LinkedIn</a>
+    </div>
+
+    <svg class="trace" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 92 L520 92 L556 92 L580 26 L604 92 L636 92 L654 60 L672 92 L1000 92"/>
+      <circle class="peak" cx="580" cy="26" r="4.5" fill="#E8A33D"/>
+    </svg>
+    <p class="trace-note">steady &rarr; fault &rarr; resolved</p>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2>Who I am</h2>
+    <p class="prose">I'm a BCA student in Mumbai, finishing in 2027, working toward my first professional role in cloud support. Everything I know about AWS I learned by building environments in my own account and then breaking them &mdash; deploying EC2 instances with Nginx, locking myself out with Security Group rules, chasing <b>AccessDenied</b> errors through IAM policies until the permission model finally made sense.</p>
+    <p class="prose">Before this I spent two years as a frontend developer intern, which taught me Git, REST APIs, and how to work in a team that ships. The part I liked most was debugging, and infrastructure is where that goes deepest. I'm not looking for a job where I already know everything. I'm looking for one where things break in production and someone has to find out why.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>What I work with</h2>
+    <ul class="checks">
+      <li class="check">
+        <span class="check-label">AWS</span>
+        <span class="check-body"><b>Core services</b>EC2, S3, IAM, VPC, Security Groups, route tables, subnets, CloudWatch, ECR, AWS CLI</span>
+      </li>
+      <li class="check">
+        <span class="check-label">LINUX</span>
+        <span class="check-body"><b>Administration and diagnosis</b>systemd services, Nginx, log analysis with journalctl and tail, process and disk investigation, permissions, command-line troubleshooting</span>
+      </li>
+      <li class="check">
+        <span class="check-label">NETWORK</span>
+        <span class="check-body"><b>Fundamentals</b>TCP/IP, subnetting, DNS, DHCP, routing and switching, connectivity troubleshooting, CCNA concepts</span>
+      </li>
+      <li class="check">
+        <span class="check-label">AUTOMATE</span>
+        <span class="check-body"><b>Infrastructure and delivery</b>Terraform, Docker, Kubernetes, Jenkins, CI/CD pipelines, Git and GitHub</span>
+      </li>
+      <li class="check">
+        <span class="check-label">CODE</span>
+        <span class="check-body"><b>Scripting and development</b>Python, Bash, JavaScript, React, Flask, REST APIs, basic SQL</span>
+      </li>
+      <li class="check">
+        <span class="check-label">SECURE</span>
+        <span class="check-body"><b>Access and controls</b>IAM policies, least-privilege design, Security Group rules, authentication and permission troubleshooting</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Things I built and broke</h2>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>EC2 web server and cloud infrastructure</h3>
+      </div>
+      <dl class="field">
+        <dt>Built</dt>
+        <dd>An EC2 Linux instance running Nginx in a public subnet, with S3 buckets and IAM users managed entirely through the AWS CLI.</dd>
+      </dl>
+      <dl class="field">
+        <dt>Broke</dt>
+        <dd>The site was unreachable from the internet while the instance showed as running. SSH worked and <b>curl localhost</b> returned the page, which ruled out the web server and pointed at the network layer.</dd>
+      </dl>
+      <dl class="field">
+        <dt>Found</dt>
+        <dd>No inbound rule for port 80 in the Security Group. Separately, an <b>AccessDenied</b> on S3 turned out to be an IAM policy granting object access but not bucket-level listing &mdash; two different ARN patterns for what felt like one permission.</dd>
+      </dl>
+      <p class="stack">EC2 · Nginx · IAM · VPC · Security Groups · S3 · AWS CLI · Linux</p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Three-tier Kubernetes DevSecOps environment</h3>
+        <a class="repo" href="https://github.com/jupiterian23/End-to-End-Kubernetes-Three-Tier-DevSecOps-Project">github.com/jupiterian23</a>
+      </div>
+      <dl class="field">
+        <dt>Built</dt>
+        <dd>Configured a three-tier application on Kubernetes for my own AWS environment: deployments, services, ingress, secrets, persistent storage, health probes and rolling updates across frontend, backend and database tiers.</dd>
+      </dl>
+      <dl class="field">
+        <dt>Wired up</dt>
+        <dd>AWS ECR for container images, Terraform with an S3 remote state backend, and a Jenkins pipeline for the deployment workflow.</dd>
+      </dl>
+      <p class="stack">Kubernetes · Docker · AWS ECR · Terraform · Jenkins · CI/CD</p>
+      <p class="note">This started from an existing open-source project rather than a blank repository. I customised and configured it for my own environment &mdash; the manifests, ECR integration, Terraform backend and pipeline configuration are my work. I haven't run Kubernetes in production and don't claim to have.</p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>AWS infrastructure as code</h3>
+        <a class="repo" href="https://github.com/jupiterian23/AWS-Cloud-Infrastructure-Terraform">github.com/jupiterian23</a>
+      </div>
+      <dl class="field">
+        <dt>Built</dt>
+        <dd>AWS resources provisioned and versioned with Terraform in ap-south-1, using a remote S3 backend for state so the environment is reproducible rather than clicked together in a console.</dd>
+      </dl>
+      <dl class="field">
+        <dt>Learned</dt>
+        <dd>Backend and provider configuration is where most of the early errors live. The init, validate and plan cycle catches them before anything reaches AWS, which is the whole argument for infrastructure as code.</dd>
+      </dl>
+      <p class="stack">Terraform · AWS · S3 remote state · HCL</p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Containerised Flask application</h3>
+      </div>
+      <dl class="field">
+        <dt>Built</dt>
+        <dd>A Python Flask application containerised with Docker, built and run through the full image and container lifecycle.</dd>
+      </dl>
+      <dl class="field">
+        <dt>Found</dt>
+        <dd>Containers that exited immediately on start. The cause was in the dependency and environment configuration rather than the application code, which is a distinction the container logs make obvious once you actually read them.</dd>
+      </dl>
+      <p class="stack">Python · Flask · Docker · Linux</p>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3>Resumence AI &mdash; resume analyser</h3>
+      </div>
+      <dl class="field">
+        <dt>Built</dt>
+        <dd>A web application that analyses resumes, built with Next.js and React against an API-driven workflow, including the frontend functionality, debugging and testing.</dd>
+      </dl>
+      <p class="stack">Next.js · React · JavaScript · REST APIs</p>
+    </article>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Where I've worked</h2>
+    <div class="role">
+      <span class="when">2024 &ndash; 2026</span>
+      <div>
+        <h3>Frontend Developer Intern &mdash; Annotation Infotech LLP</h3>
+        <p>Built responsive components in HTML, CSS, JavaScript and React, integrated REST APIs with backend-connected workflows, and debugged application issues alongside the development team through feature development and deployment.</p>
+      </div>
+    </div>
+    <div class="role">
+      <span class="when">2023</span>
+      <div>
+        <h3>Data Management &amp; Office Administration &mdash; Aegis Logistics Limited</h3>
+        <p>Managed attendance records, purchase orders and operational documentation, preparing structured reports that the business ran on day to day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2>Study and certification</h2>
+    <div class="role">
+      <span class="when">Expected 2027</span>
+      <div>
+        <h3>Bachelor of Computer Applications &mdash; Amity University Online</h3>
+        <p>Currently in the fifth semester. CGPA 8.40 out of 10.</p>
+      </div>
+    </div>
+    <div class="role">
+      <span class="when">In progress</span>
+      <div>
+        <h3>Cisco Certified Network Associate (CCNA)</h3>
+        <p>Networking fundamentals, TCP/IP, subnetting, routing and switching, DNS and DHCP, and network troubleshooting.</p>
+      </div>
+    </div>
+    <div class="role">
+      <span class="when">Sept 2026</span>
+      <div>
+        <h3>Cloud Computing with AWS &mdash; Internshala</h3>
+        <p>Six-week practical training programme covering cloud computing and AWS services.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p class="prose">I'm looking for my first professional role in cloud support or cloud operations, in Mumbai or remote, and I'm available immediately. If you're hiring and you think I might fit, I'd like to hear from you.</p>
+    <div class="contact">
+      <a href="mailto:shubhamgorule23@gmail.com">shubhamgorule23@gmail.com</a>
+      <a href="tel:+918356866332">+91 8356866332</a>
+      <a href="https://github.com/jupiterian23">github.com/jupiterian23</a>
+      <a href="https://www.linkedin.com/in/shubham-gorule-a44446361">linkedin.com/in/shubham-gorule</a>
+    </div>
+    <p class="colophon">Chembur, Mumbai, Maharashtra, India</p>
+  </div>
+</footer>
+
+</body>
+</html>
