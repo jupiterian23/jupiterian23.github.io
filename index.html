@@ -915,6 +915,42 @@
                     }
                 }
 
+                            /* hero row: text + photo */
+            .heroRow {
+                display: flex;
+                align-items: center;
+                gap: 36px;
+                flex-wrap: wrap-reverse;
+                justify-content: space-between;
+            }
+            .heroText {
+                flex: 1 1 380px;
+                min-width: 0;
+            }
+            .avatar {
+                flex: 0 0 auto;
+                width: 190px;
+                height: 190px;
+                border-radius: 50%;
+                object-fit: cover;
+                object-position: center top;
+                border: 1px solid var(--rule);
+                box-shadow:
+                    0 0 0 1px rgba(232, 163, 61, 0.28),
+                    0 18px 40px rgba(0, 0, 0, 0.45);
+                filter: saturate(0.92);
+            }
+            @media (max-width: 760px) {
+                .heroRow {
+                    gap: 24px;
+                    justify-content: flex-start;
+                }
+                .avatar {
+                    width: 120px;
+                    height: 120px;
+                }
+            }
+
                 const quick = ["whoami", "skills", "projects", "contact", "uptime", "help"];
 
                 return (
@@ -980,35 +1016,49 @@
                             </div>
                         </div>
 
-                        <header>
+                                                <header>
                             <div className="wrap">
                                 <div className="bracket">
-                                    <p className="eyebrow">
-                                        <span className="dot"></span>Open to Cloud Support roles · Mumbai · Immediate
-                                        joiner
-                                    </p>
-                                    <h1>Shubham R Gorule</h1>
-                                    <p className="lede">
-                                        I build cloud infrastructure on AWS, and I spend most of my time{" "}
-                                        <b>working out why it stopped working</b>. Linux, networking, and the diagnostic
-                                        path from symptom to cause.
-                                    </p>
-                                    <div className="actions">
-                                        <a className="btn btn-key" href="mailto:shubhamgorule23@gmail.com">
-                                            Email me
-                                        </a>
-                                        <a className="btn" href="Shubham_Gorule_AWS_Cloud_Support_Resume.pdf">
-                                            Resume
-                                        </a>
-                                        <a className="btn" href="https://github.com/jupiterian23">
-                                            GitHub
-                                        </a>
-                                        <a
-                                            className="btn"
-                                            href="https://www.linkedin.com/in/shubham-r-gorule-a44446361"
-                                        >
-                                            LinkedIn
-                                        </a>
+                                    <div className="heroRow">
+                                        <div className="heroText">
+                                            <p className="eyebrow">
+                                                <span className="dot"></span>Open to Cloud Support roles · Mumbai ·
+                                                Immediate joiner
+                                            </p>
+                                            <h1>Shubham R Gorule</h1>
+                                            <p className="lede">
+                                                I build cloud infrastructure on AWS, and I spend most of my time{" "}
+                                                <b>working out why it stopped working</b>. Linux, networking, and the
+                                                diagnostic path from symptom to cause.
+                                            </p>
+                                            <div className="actions">
+                                                <a className="btn btn-key" href="mailto:shubhamgorule23@gmail.com">
+                                                    Email me
+                                                </a>
+                                                
+                                                    className="btn"
+                                                    href="Shubham_Gorule_AWS_Cloud_Support_Resume.pdf"
+                                                >
+                                                    Resume
+                                                </a>
+                                                <a className="btn" href="https://github.com/jupiterian23">
+                                                    GitHub
+                                                </a>
+                                                
+                                                    className="btn"
+                                                    href="https://www.linkedin.com/in/shubham-r-gorule-a44446361"
+                                                >
+                                                    LinkedIn
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <img
+                                            className="avatar"
+                                            src="profile.jpg"
+                                            alt="Shubham R Gorule"
+                                            width="190"
+                                            height="190"
+                                        />
                                     </div>
                                 </div>
 
